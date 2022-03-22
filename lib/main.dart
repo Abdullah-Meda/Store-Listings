@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       initialRoute: HomeScreen.id,
       routes: {
-        HomeScreen.id: (context) => HomeScreen(),
+        HomeScreen.id: (context) => const HomeScreen(),
         ListingsScreen.id: (context) => const ListingsScreen(),
       },
     );
