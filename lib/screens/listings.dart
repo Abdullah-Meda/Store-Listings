@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:store_listings/models/product.dart';
 import 'package:store_listings/services/database_service.dart';
+
+import '../utils/constants.dart';
 
 class ListingsScreen extends StatelessWidget {
   static const id = '/listings';
@@ -20,7 +23,7 @@ class ListingsScreen extends StatelessWidget {
           future: DatabaseService.getProducts(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<ProductModel> list = [];
+              List<ProductModel> list = snapshot.data!;
               return list.isEmpty
                   ? Padding(
                       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.4),
@@ -32,7 +35,34 @@ class ListingsScreen extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        return Text(list[index].productName);
+                        ProductModel product = list[index];
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          elevation: 50,
+                          color: createRandomColor().withOpacity(0.3),
+                          shadowColor: Colors.black,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(product.productName, style: kDarkLabelTextStyle),
+                                    SizedBox(
+                                      height: 20,
+                                      child: Image.asset(
+                                          "assets/ratings/${product.productRating}.png"),
+                                    )
+                                  ],
+                                ),
+                                Text(product.productDescription, style: kLightLabelTextStyle)
+                              ],
+                            ),
+                          ),
+                        );
                       },
                     );
             } else {
