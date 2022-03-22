@@ -26,22 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: RoundedLoadingButton(
           failedIcon: Icons.cottage,
-          child: const Text('Tap me!', style: TextStyle(color: Colors.white)),
+          child: const Text('Load Data!', style: TextStyle(color: Colors.white)),
           controller: _btnController1,
           onPressed: () async {
             _btnController1.success();
             await Future.delayed(const Duration(milliseconds: 500));
             Navigator.pushNamed(context, ListingsScreen.id);
+            _btnController1.reset();
           },
         ),
       ),
     );
-  }
-
-  void _doSomething(BuildContext context) async {
-    // Timer(const Duration(seconds: 10), () {
-    _btnController1.success();
-    // });
-    // Navigator.pushNamed(context, ListingsScreen.id);
   }
 }
