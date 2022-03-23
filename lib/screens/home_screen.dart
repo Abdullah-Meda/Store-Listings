@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:store_listings/utils/constants.dart';
 
-import '../models/product.dart';
 import 'listings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,11 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Store Listings"),
+        title: const Text(kAppName),
+        backgroundColor: kAppColor,
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 25.0),
       ),
       body: Center(
         child: RoundedLoadingButton(
-          failedIcon: Icons.cottage,
+          failedIcon: Icons.error_outline,
+          color: kAppColor,
+          successColor: Colors.green,
+          errorColor: Colors.red,
           child: const Text('Load Data!', style: TextStyle(color: Colors.white)),
           controller: _btnController1,
           onPressed: () async {
@@ -62,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // for (Map<String, dynamic> map in data) {
       //   await FirebaseFirestore.instance.collection("products").add(map);
       // }
-      await FirebaseFirestore.instance.collection("products").doc().set({"data": data});
+      await FirebaseFirestore.instance.collection("products").doc("data").set({"data": data});
     } else {
       debugPrint("Data already present in db");
     }

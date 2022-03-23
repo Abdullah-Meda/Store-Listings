@@ -2,6 +2,9 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const String kAppName = 'Ѕтσяє Lɪꜱᴛɪиɢѕ';
+const Color kAppColor = Colors.amber;
+
 const colors = [
   Color(0xffff6767),
   Color(0xff66e0da),
