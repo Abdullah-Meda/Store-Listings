@@ -6,16 +6,15 @@ const String kAppName = 'Ѕтσяє Lɪꜱᴛɪиɢѕ';
 const Color kAppColor = Colors.amber;
 
 const colors = [
-  Color(0xffff6767),
-  Color(0xff66e0da),
-  Color(0xfff5a2d9),
-  Color(0xfff0c722),
-  Color(0xff6a85e5),
-  Color(0xfffd9a6f),
-  Color(0xff92db6e),
-  Color(0xff73b8e5),
-  Color(0xfffd7590),
-  Color(0xffc78ae5),
+  Color(0xffFDE2E6),
+  Color(0xffFCF7DE),
+  Color(0xffDEFDE0),
+  Color(0xffDEF3FD),
+  Color(0xffF0DEFD),
+  // Color(0xff92db6e),
+  // Color(0xff73b8e5),
+  // Color(0xfffd7590),
+  // Color(0xffc78ae5),
 ];
 
 final TextStyle kDarkLabelTextStyle = GoogleFonts.dmSans(
