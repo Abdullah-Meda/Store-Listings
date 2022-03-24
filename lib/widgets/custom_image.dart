@@ -13,6 +13,7 @@ class CustomImageWidget extends StatelessWidget {
       child: Image.network(
         url,
         fit: BoxFit.fill,
+        // Error check: some images produced a 404 GET error
         errorBuilder: (_, __, ___) => Image.asset("assets/404.png", fit: BoxFit.fill),
       ),
     );
