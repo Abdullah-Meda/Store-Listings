@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-import 'package:store_listings/services/database_service.dart';
-import 'package:store_listings/utils/constants.dart';
 
-import 'listings_screen.dart';
+import 'package:store_listings/utils/constants.dart';
+import 'package:store_listings/screens/listings_screen.dart';
+import 'package:store_listings/services/database_service.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = '/home';
@@ -57,8 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if ((await FirebaseFirestore.instance.collection('products').get()).size != 1) {
       String jsonData =
           await DefaultAssetBundle.of(context).loadString("assets/data/products.json");
-      final data = json.decode(jsonData) as List<dynamic>;
-      await FirebaseFirestore.instance.collection("products").doc("data").set({"data": data});
+      await DatabaseService.setProducts(json.decode(jsonData) as List<dynamic>);
     } else {
       debugPrint("Data already present in db");
     }

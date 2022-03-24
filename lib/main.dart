@@ -12,7 +12,6 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   Hive.registerAdapter(ProductAdapter());
-  await Hive.openBox<Product>("products");
   runApp(const MyApp());
 }
 

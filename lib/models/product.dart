@@ -20,12 +20,12 @@ class Product extends HiveObject {
     required this.productDescription,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
+  factory Product.fromJson(Map<String, dynamic> data) {
     return Product(
-      productName: json['productName'],
-      productUrl: json['productUrl'],
-      productRating: json['productRating'],
-      productDescription: json['productDescription'],
+      productName: data['productName'],
+      productUrl: data['productUrl'],
+      productRating: data['productRating'],
+      productDescription: data['productDescription'],
     );
   }
 }
